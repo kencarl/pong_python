@@ -170,3 +170,13 @@ while True:
     if (ball.xcor() < paddle_a.xcor() + 20) and (ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() -50):
         ball.setx(paddle_a.xcor() + 20)
         ball.dx *= -1
+    if (paddle_a.xcor() < 0 ) and (paddle_b.ycor() < paddle_a.ycor() + 100 and paddle_b.ycor() > paddle_a.ycor() - 100 and paddle_b.xcor() < paddle_a.xcor() -10):
+        paddle_b.goto(350, 0)
+        score_b -= 3
+        pen.clear()
+        pen.write("Player A: {}   Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+    if (paddle_b.xcor() > 0 ) and (paddle_a.ycor() < paddle_b.ycor() + 100 and paddle_a.ycor() > paddle_b.ycor() - 100 and paddle_a.xcor() > paddle_b.xcor() +10):
+        paddle_a.goto(-350, 0)
+        score_a -= 3
+        pen.clear()
+        pen.write("Player A: {}   Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
