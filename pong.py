@@ -66,6 +66,15 @@ def paddle_a_left():
     x = paddle_a.xcor()
     x -= 20
     paddle_a.setx(x)
+
+def paddle_a_diagonal_left():
+    x = paddle_a.xcor()
+    y = paddle_a.ycor()
+    x -= 20
+    y += 20
+    paddle_a.setx(x)
+    paddle_a.sety(y)
+
 def paddle_b_up():
     y = paddle_b.ycor()
     y += 20
@@ -90,6 +99,7 @@ wn.onkeypress(paddle_a_up, "w")
 wn.onkeypress(paddle_a_down, "s")
 wn.onkeypress(paddle_a_right, "d")
 wn.onkeypress(paddle_a_left, "a")
+wn.onkeypress(paddle_a_diagonal_left, "q")
 wn.onkeypress(paddle_b_up, "Up")
 wn.onkeypress(paddle_b_down, "Down")
 wn.onkeypress(paddle_b_right, "Right")
@@ -134,10 +144,20 @@ while True:
         score_a += 1
         pen.clear()
         pen.write("Player A: {}   Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+    if paddle_a.xcor() > 350:
+        paddle_a.goto(-350, 0)
+        score_a += 2
+        pen.clear()
+        pen.write("Player A: {}   Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
     if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
         score_b += 1
+        pen.clear()
+        pen.write("Player A: {}   Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+    if paddle_b.xcor() < -350:
+        paddle_b.goto(350, 0)
+        score_a += 2
         pen.clear()
         pen.write("Player A: {}   Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
     #Paddle and ball collisions
