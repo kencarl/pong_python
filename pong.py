@@ -56,6 +56,16 @@ def paddle_a_down():
     y = paddle_a.ycor()
     y -= 20
     paddle_a.sety(y)
+
+def paddle_a_right():
+    x = paddle_a.xcor()
+    x += 20
+    paddle_a.setx(x)
+
+def paddle_a_left():
+    x = paddle_a.xcor()
+    x -= 20
+    paddle_a.setx(x)
 def paddle_b_up():
     y = paddle_b.ycor()
     y += 20
@@ -64,12 +74,26 @@ def paddle_b_down():
     y = paddle_b.ycor()
     y -= 20
     paddle_b.sety(y)
+
+def paddle_b_right():
+        x = paddle_b.xcor()
+        x += 20
+        paddle_b.setx(x)
+
+def paddle_b_left():
+        x = paddle_b.xcor()
+        x -= 20
+        paddle_b.setx(x)
 #Keyboard binding
 wn.listen()
 wn.onkeypress(paddle_a_up, "w")
 wn.onkeypress(paddle_a_down, "s")
+wn.onkeypress(paddle_a_right, "d")
+wn.onkeypress(paddle_a_left, "a")
 wn.onkeypress(paddle_b_up, "Up")
 wn.onkeypress(paddle_b_down, "Down")
+wn.onkeypress(paddle_b_right, "Right")
+wn.onkeypress(paddle_b_left, "Left")
 # Main game loop
 while True:
     wn.update()
@@ -83,10 +107,19 @@ while True:
         paddle_b.sety(250)
     if paddle_b.ycor() < -250:
         paddle_b.sety(-250)
+    if paddle_b.xcor() > 390:
+        paddle_b.setx(390)
+    if paddle_b.xcor() < -390:
+        paddle_b.setx(-390)
     if paddle_a.ycor() > 250:
         paddle_a.sety(250)
     if paddle_a.ycor() < -250:
         paddle_a.sety(-250)
+    if paddle_a.xcor() < -390:
+        paddle_a.setx(-390)
+    if paddle_a.xcor() > 390:
+        paddle_a.setx(390)
+
 
     # Ball Border checking
     if ball.ycor() > 290:
