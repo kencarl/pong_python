@@ -141,9 +141,12 @@ while True:
         pen.clear()
         pen.write("Player A: {}   Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
     #Paddle and ball collisions
-    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() -50):
-        ball.setx(340)
+    #if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() -50):
+     #   ball.setx(340)
+      #  ball.dx *= -1
+    if(ball.xcor() > paddle_b.xcor() -20) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() -50):
+        ball.setx(paddle_b.xcor() -20)
         ball.dx *= -1
-    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() -50):
-        ball.setx(-340)
+    if (ball.xcor() < paddle_a.xcor() + 20) and (ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() -50):
+        ball.setx(paddle_a.xcor() + 20)
         ball.dx *= -1
